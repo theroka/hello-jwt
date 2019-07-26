@@ -1,0 +1,31 @@
+{
+  "name": "hello-jwt",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "author": "theroka <rokatron.rk@gmail.com>",
+  "license": "GPL3",
+  "private": true,
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/koa": "^2.0.49",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-router": "^7.0.42",
+    "@types/koa-send": "^4.1.2",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
+    "browserify": "^16.3.0",
+    "gulp": "^4.0.2",
+    "gulp-browserify": "^0.5.1",
+    "gulp-cli": "^2.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-typescript": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-send": "^5.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "typescript": "^3.6.0-dev.20190725"
+  }
+}
