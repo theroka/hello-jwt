@@ -19,3 +19,8 @@ export const setRefreshCookie = (ctx: Context, token: string): Context => {
   ctx.cookies.set(REFRESH_COOKIE_NAME, token, opts);
   return ctx
 }
+
+export const dropCookie = (ctx: Context, name: string): Context => {
+  ctx.cookies.set(name, undefined, { maxAge: 0 });
+  return ctx
+}

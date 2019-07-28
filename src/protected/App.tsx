@@ -1,6 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 export const App = () => {
+
+  const signout = async () => {
+    let response = await fetch("/signout", { method: "post", credentials: "include" });
+    if (response.ok) window.location.replace("/");
+  };
+
   return (
     <Fragment>
       <header>
@@ -8,7 +14,9 @@ export const App = () => {
         <nav>
           <a href="#/">Foo</a>
           &bull;
-          <a href="/signout">Signout</a>
+          <a href="/signout">Signout (Link)</a>
+          &bull;
+          <a onClick={signout}>Signout (AJAX)</a>
         </nav>
       </header>
       <main>
