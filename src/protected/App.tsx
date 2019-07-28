@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-const App = () => {
+export const App = () => {
   return (
     <Fragment>
       <header>

@@ -8,7 +8,7 @@ interface IState {
 
 const initialState: IState = { loading: false, username: null, secret: null };
 
-const App = () => {
+export const App = () => {
   let [state, setState] = useState(initialState);
 
   const signin = async () => {
@@ -18,7 +18,7 @@ const App = () => {
       "Content-Type": "application/json"
     });
     let response = await fetch("/signin", { method: "post", body, headers });
-    if (response.ok) window.location.replace("/");
+    if (response.ok) window.location.replace("/app");
   };
 
   const change = (evt: React.ChangeEvent<HTMLInputElement>) => {

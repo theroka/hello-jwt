@@ -1,12 +1,17 @@
 import Koa from "koa";
-import { deleteToken } from "./token";
+import { invalidateToken } from "./token";
 
-export const getSignout = async (ctx: Koa.Context) => postSignout(ctx)
+export const getSignout = async (ctx: Koa.Context) => postSignout(ctx);
 
 export const postSignout = async (ctx: Koa.Context) => {
-  const token = ctx.get("Authorization") || ctx.cookies.get("Authorization");
-  deleteToken(token);
-  ctx.cookies.set("Authorization", undefined, { secure: false, httpOnly: true });
+  const refreshToken = ctx.cookies.get("Refresh") || "";
+  invalidateToken(refreshToken);
+  console.log("refresh token invalidated", refreshToken.split(".")[2]);
+  ctx.cookies.set("Authorization", undefined, {
+    secure: false,
+    httpOnly: true
+  });
+  ctx.cookies.set("Refresh", undefined, { secure: false, httpOnly: true });
   ctx.body = "Singned out.";
-  ctx.redirect("/")
+  ctx.redirect("/");
 };
