@@ -15,7 +15,7 @@ export const renderFullPage = (
       <head>
         <meta charset="utf-8"/>
         <title>${title}</title>
-        <link rel="stylesheet" href="${assetRoot}/styles.css"/>
+        <link rel="stylesheet" href="/static/styles.css"/>
       </head>
       <body>
         <div id="root">${body}</div>

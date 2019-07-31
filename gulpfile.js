@@ -34,7 +34,7 @@ gulp.task("protected", function() {
 // copy static asserts to build folder
 gulp.task("assets", function() {
   return gulp
-    .src(["src/public/styles.css", "src/protected/styles.css"], {
+    .src(["src/static/styles.css" ], {
       base: "src/"
     })
     .pipe(gulp.dest("build/"));

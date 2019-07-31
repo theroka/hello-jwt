@@ -4,7 +4,7 @@ import { invalidateToken } from "./token";
 import { dropCookie, AUTH_COOKIE_NAME, REFRESH_COOKIE_NAME } from "./cookies";
 import { signature } from "./utils";
 
-export const getSignout = async (ctx: Koa.Context) => {
+export const getLogout = async (ctx: Koa.Context) => {
   const refreshToken = ctx.cookies.get("Refresh") || "";
   invalidateToken(refreshToken);
   console.log(chalk.magenta("refresh token"), chalk.red("invalidated"), signature(refreshToken));
@@ -14,7 +14,7 @@ export const getSignout = async (ctx: Koa.Context) => {
   ctx.redirect("/");
 };
 
-export const postSignout = async (ctx: Koa.Context) => {
+export const postLogout = async (ctx: Koa.Context) => {
   const refreshToken = ctx.cookies.get("Refresh") || "";
   invalidateToken(refreshToken);
   console.log(chalk.magenta("refresh token"), chalk.red("invalidated"), signature(refreshToken));

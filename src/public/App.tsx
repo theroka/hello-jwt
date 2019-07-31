@@ -38,7 +38,7 @@ export const App = () => {
         </nav>
       </header>
       <main>
-        <div className="signin">
+        <div id="login">
           <input
             type="text"
             name="username"

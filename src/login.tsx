@@ -5,7 +5,7 @@ import { createToken } from "./token";
 import { setAuthCookie, setRefreshCookie } from "./cookies";
 import { signature } from "./utils";
 
-export const postSignin = async (ctx: Koa.Context) => {
+export const postLogin = async (ctx: Koa.Context) => {
   const { username, secret } = ctx.request.body;
 
   console.log(`postSignin, ${username}, ${secret}`);
