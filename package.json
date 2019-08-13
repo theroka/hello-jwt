@@ -12,6 +12,7 @@
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-router": "^7.0.42",
     "@types/koa-send": "^4.1.2",
+    "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
     "browserify": "^16.3.0",
@@ -29,6 +30,9 @@
     "koa-send": "^5.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "typescript": "^3.6.0-dev.20190725"
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^4.0.9",
+    "typeorm": "^0.2.18",
+    "typescript": "3.1.6"
   }
 }

@@ -7,7 +7,8 @@ import {
   AUTH_COOKIE_NAME,
   REFRESH_COOKIE_NAME
 } from "../cookies";
-import { createToken, validateAccessToken, validateRefreshToken } from "./index"
+import { validateAccessToken, validateRefreshToken } from "./validate"
+import createToken from "./create";
 
 // Koa middleware to validate access and refresh tokens of client-side request
 // with tokens passed in Authorization header and secure cookie
@@ -20,25 +21,7 @@ export const hasValidToken = async (
   const refreshToken = ctx.cookies.get(REFRESH_COOKIE_NAME) || "";
 
   const accessTokenValid = await validateAccessToken(accessToken);
-  const refreshTokenValid = await validateRefreshToken(refreshToken);
-
-  console.log(
-    chalk.yellow("access token"),
-    "valid:",
-    accessTokenValid
-      ? chalk.green(`${accessTokenValid}`)
-      : chalk.red(`${accessTokenValid}`),
-    signature(accessToken)
-  );
-
-  console.log(
-    chalk.magenta("refresh token"),
-    "valid:",
-    refreshTokenValid
-      ? chalk.green(`${refreshTokenValid}`)
-      : chalk.red(`${refreshTokenValid}`),
-    signature(refreshToken)
-  );
+  const refreshTokenValid = await validateRefreshToken(refreshToken, ctx.database);
 
   if (accessTokenValid) {
     await next();
@@ -46,7 +29,7 @@ export const hasValidToken = async (
   }
 
   if (accessTokenValid === false && refreshTokenValid) {
-    let newAccessToken = createToken({ foo: "bar" }, 1, false);
+    let newAccessToken = createToken({ createdByRefreshToken: true }, 60);
     ctx.set(AUTH_HEADER_NAME, `Bearer ${newAccessToken}`);
     setAuthCookie(ctx, newAccessToken);
     console.log(
