@@ -1,10 +1,9 @@
 import Koa from "koa";
 import chalk from "chalk";
-import { validateUser } from "./user";
-import createToken from "./token/createToken";
-import { Token } from "./token/model";
-import { setAuthCookie, setRefreshCookie } from "./cookies";
 import { signature } from "./utils";
+import { createToken } from "./token";
+import { validateUser } from "./user";
+import { setAuthCookie, setRefreshCookie } from "./cookies";
 
 export const postLogin = async (ctx: Koa.Context) => {
   const { username, secret } = ctx.request.body;

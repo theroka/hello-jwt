@@ -7,8 +7,8 @@ import {
   AUTH_COOKIE_NAME,
   REFRESH_COOKIE_NAME
 } from "../cookies";
-import { validateAccessToken, validateRefreshToken } from "./index"
-import createToken from "./createToken";
+import { validateAccessToken, validateRefreshToken } from "./validate"
+import createToken from "./create";
 
 // Koa middleware to validate access and refresh tokens of client-side request
 // with tokens passed in Authorization header and secure cookie

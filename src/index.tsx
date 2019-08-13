@@ -3,19 +3,18 @@ import Router from "koa-router";
 import Body from "koa-bodyparser";
 import Send from "koa-send";
 
-import { hasValidToken } from "./token/middleware";
+import { Model as Token, hasValidToken } from "./token";
+import { Model as User, getUsers } from "./user";
 import { getIndex, getApp } from "./page";
 import { postLogin } from "./login";
 import { getLogout, postLogout } from "./logout";
-import { getUsers } from "./user";
 
 import { createConnection } from "typeorm";
-import { Token } from "./token/model";
 
 createConnection({
   type: "sqlite",
   database: __dirname + "/Database.sqlite",
-  entities: [Token],
+  entities: [Token, User],
   synchronize: true
 })
   .then(async database => {
